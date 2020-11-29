@@ -12,9 +12,15 @@
   padding: 16px;
 }
 
-.icon {
+.npmIcon {
   height: 20px;
   width: 20px;
+}
+
+.copyIcon,
+.githubIcon {
+  height: 16px;
+  width: 16px;
 }
 
 .contentWrapper {
@@ -23,8 +29,11 @@
   padding: 16px;
 }
 
-.heading3Wrapper {
+.headingWrapper {
+  align-items: center;
   border-bottom: 1px solid #ececec;
+  display: flex;
+  justify-content: space-between;
   padding: 0 0 8px;
 }
 

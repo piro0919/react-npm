@@ -3,6 +3,7 @@ import Layout from "components/templates/Layout";
 import usePackages from "hooks/usePackages";
 import React, { FC, lazy, Suspense, useMemo } from "react";
 import camelCase from "camelcase";
+import { ToastContainer, toast } from "react-toastify";
 
 const Pages: FC = () => {
   const packages = usePackages();
@@ -17,8 +18,11 @@ const Pages: FC = () => {
               })}`
             )
         );
+        const handleCopy = () =>
+          toast.success(`${name} copied.`, { containerId: "pages" });
 
         return {
+          handleCopy,
           name,
           version,
           demo: (
@@ -35,6 +39,11 @@ const Pages: FC = () => {
   return (
     <Layout>
       <CardList items={items} />
+      <ToastContainer
+        containerId="pages"
+        enableMultiContainer={true}
+        position="bottom-right"
+      />
     </Layout>
   );
 };

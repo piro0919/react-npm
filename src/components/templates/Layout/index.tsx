@@ -13,13 +13,9 @@ const Layout: FC = ({ children }) => {
 
   return (
     <div className={styles.wrapper} style={style}>
-      <div>
-        <Header />
-      </div>
+      <Header />
       <div className={styles.contentWrapper}>{children}</div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

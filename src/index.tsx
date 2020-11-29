@@ -4,10 +4,17 @@ import reportWebVitals from "./reportWebVitals";
 import Containers from "containers";
 import "ress";
 import "./styles/global.scss";
+import { BrowserRouter as Router } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { NodePackageManagerProvider } from "contexts/NodePackageManagerContext";
 
 ReactDOM.render(
   <StrictMode>
-    <Containers />
+    <NodePackageManagerProvider>
+      <Router>
+        <Containers />
+      </Router>
+    </NodePackageManagerProvider>
   </StrictMode>,
   document.getElementById("root")
 );
