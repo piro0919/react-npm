@@ -1,0 +1,33 @@
+.wrapper {
+  border: 1px solid #ececec;
+  border-radius: 8px;
+}
+
+.headerWrapper {
+  align-items: center;
+  background: #ececec;
+  color: #6d6d84;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+}
+
+.contentWrapper {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.heading3Wrapper {
+  border-bottom: 1px solid #ececec;
+  padding: 0 0 8px;
+}
+
+.articleContentWrapper {
+  padding: 8px 0 0;
+}

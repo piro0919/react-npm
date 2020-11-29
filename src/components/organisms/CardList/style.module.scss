@@ -1,0 +1,4 @@
+.list {
+  display: grid;
+  grid-template: auto / repeat(auto-fill, minmax(auto, 320px));
+}

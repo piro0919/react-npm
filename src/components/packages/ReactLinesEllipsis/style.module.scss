@@ -1,0 +1,12 @@
+.wrapper {
+  display: grid;
+  gap: 8px;
+  word-break: break-all;
+}
+
+.textarea {
+  border: 1px solid #ececec;
+  padding: 4px;
+  resize: vertical;
+  width: 100%;
+}
