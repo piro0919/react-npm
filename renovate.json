@@ -2,8 +2,12 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "enabled": false,
+      "automerge": false,
       "packageNames": ["node-sass"]
+    },
+    {
+      "automerge": true,
+      "updateTypes": ["minor", "patch", "pin", "digest"]
     }
   ]
 }
