@@ -4,10 +4,10 @@ import packageJson from "./jsons/package.json";
 const usePackages = () => {
   const ignorePackages = useMemo(
     () => [
-      "camelcase",
       "concurrently",
       "gh-pages",
       "node-sass",
+      "pascal-case",
       "react",
       "react-copy-to-clipboard",
       "react-dom",

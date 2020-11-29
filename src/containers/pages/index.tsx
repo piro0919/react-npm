@@ -2,7 +2,7 @@ import CardList, { CardListProps } from "components/organisms/CardList";
 import Layout from "components/templates/Layout";
 import usePackages from "hooks/usePackages";
 import React, { FC, lazy, Suspense, useMemo } from "react";
-import camelCase from "camelcase";
+import { pascalCase } from "pascal-case";
 import { ToastContainer, toast } from "react-toastify";
 
 const Pages: FC = () => {
@@ -10,13 +10,9 @@ const Pages: FC = () => {
   const items = useMemo<CardListProps["items"]>(
     () =>
       packages.map(({ name, version }) => {
+        const componentName = pascalCase(name);
         const LazyComponent = lazy(
-          () =>
-            import(
-              `components//packages/${camelCase(name, {
-                pascalCase: true,
-              })}`
-            )
+          () => import(`components/packages/${componentName}`)
         );
         const handleCopy = () =>
           toast.success(`${name} copied.`, { containerId: "pages" });

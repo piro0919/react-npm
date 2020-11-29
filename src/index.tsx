@@ -11,7 +11,7 @@ import { NodePackageManagerProvider } from "contexts/NodePackageManagerContext";
 ReactDOM.render(
   <StrictMode>
     <NodePackageManagerProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Containers />
       </Router>
     </NodePackageManagerProvider>

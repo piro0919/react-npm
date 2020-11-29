@@ -3,14 +3,14 @@ import Heading3 from "components/atoms/Heading3";
 import React, { ComponentPropsWithoutRef, FC, useMemo } from "react";
 import styles from "./style.module.scss";
 import { FaRegCopy, FaGithub, FaNpm } from "react-icons/fa";
-import camelCase from "camelcase";
+import { pascalCase } from "pascal-case";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { NodePackageManagerConsumer } from "contexts/NodePackageManagerContext";
 
 export type CardProps = {
   demo: ComponentPropsWithoutRef<"div">["children"];
   handleCopy: CopyToClipboard.Props["onCopy"];
-  name: Heading2Props["children"] & Parameters<typeof camelCase>[0];
+  name: Heading2Props["children"] & Parameters<typeof pascalCase>[0];
   version: ComponentPropsWithoutRef<"div">["children"];
 };
 
@@ -63,11 +63,8 @@ const Card: FC<
           <div className={styles.headingWrapper}>
             <Heading3>Demo</Heading3>
             <a
-              href={`https://github.com/piro0919/react-npm/blob/master/src/components/packages/${camelCase(
-                name,
-                {
-                  pascalCase: true,
-                }
+              href={`https://github.com/piro0919/react-npm/blob/master/src/components/packages/${pascalCase(
+                name
               )}/index.tsx`}
               rel="noreferrer"
               target="_blank"
