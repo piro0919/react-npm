@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/packages/ReactLinesEllipsis/style.module.scss"],"names":["module","exports"],"mappings":"gGACAA,EAAOC,QAAU,CAAC,QAAU,uBAAuB,SAAW","file":"static/js/5.9ac2aca5.chunk.js","sourcesContent":["// extracted by mini-css-extract-plugin\nmodule.exports = {\"wrapper\":\"style_wrapper__3xIAq\",\"textarea\":\"style_textarea__3ZNv_\"};"],"sourceRoot":""}
