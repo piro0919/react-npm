@@ -4,8 +4,14 @@ import usePackages from "hooks/usePackages";
 import React, { FC, lazy, Suspense, useMemo } from "react";
 import { pascalCase } from "pascal-case";
 import { ToastContainer, toast } from "react-toastify";
+import {
+  NodePackageManagerConsumer,
+  NodePackageManagerValue,
+} from "contexts/NodePackageManagerContext";
 
-const Pages: FC = () => {
+const Pages: FC<Pick<NodePackageManagerValue, "nodePackageManager">> = ({
+  nodePackageManager,
+}) => {
   const packages = usePackages();
   const items = useMemo<CardListProps["items"]>(
     () =>
@@ -14,11 +20,16 @@ const Pages: FC = () => {
         const LazyComponent = lazy(
           () => import(`components/packages/${componentName}`)
         );
+        const installCommand =
+          nodePackageManager === "npm"
+            ? `npm install --save ${name}`
+            : `yarn add ${name}`;
         const handleCopy = () =>
-          toast.success(`${name} copied.`, { containerId: "pages" });
+          toast.success(`Copy "${installCommand}"`, { containerId: "pages" });
 
         return {
           handleCopy,
+          installCommand,
           name,
           version,
           demo: (
@@ -29,7 +40,7 @@ const Pages: FC = () => {
           key: name,
         };
       }),
-    [packages]
+    [nodePackageManager, packages]
   );
 
   return (
@@ -44,4 +55,11 @@ const Pages: FC = () => {
   );
 };
 
-export default Pages;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => (
+  <NodePackageManagerConsumer>
+    {({ nodePackageManager }) => (
+      <Pages nodePackageManager={nodePackageManager} />
+    )}
+  </NodePackageManagerConsumer>
+);

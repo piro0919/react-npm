@@ -11,11 +11,12 @@ export type CardListProps = {
 const CardList: FC<CardListProps> = ({ items }) => {
   const children = useMemo<ComponentPropsWithoutRef<"ul">["children"]>(
     () =>
-      items.map(({ demo, handleCopy, key, name, version }) => (
+      items.map(({ demo, handleCopy, installCommand, key, name, version }) => (
         <li key={key}>
           <Card
             demo={demo}
             handleCopy={handleCopy}
+            installCommand={installCommand}
             name={name}
             version={version}
           />

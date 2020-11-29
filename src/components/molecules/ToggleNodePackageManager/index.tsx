@@ -2,12 +2,16 @@ import React, { FC, useEffect, useState } from "react";
 import Switch, { ReactSwitchProps } from "react-switch";
 import { FaNpm, FaYarn } from "react-icons/fa";
 import styles from "./style.module.scss";
-import { NodePackageManagerConsumer } from "contexts/NodePackageManagerContext";
+import {
+  NodePackageManagerConsumer,
+  NodePackageManagerValue,
+} from "contexts/NodePackageManagerContext";
 
-const ToggleNodePackageManager: FC<{
-  handleChange: ReactSwitchProps["onChange"];
-  nodePackageManager: "npm" | "yarn";
-}> = ({ handleChange, nodePackageManager }) => {
+const ToggleNodePackageManager: FC<
+  Pick<NodePackageManagerValue, "nodePackageManager"> & {
+    handleChange: NodePackageManagerValue["toggleNodePackageManager"];
+  }
+> = ({ handleChange, nodePackageManager }) => {
   const [checked, setChecked] = useState<ReactSwitchProps["checked"]>(
     nodePackageManager === "npm"
   );

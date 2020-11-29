@@ -4,10 +4,12 @@ type NodePackageManager = "npm" | "yarn";
 
 type ToggleNodePackageManager = () => void;
 
-const { Consumer, Provider } = createContext<{
+export type NodePackageManagerValue = {
   nodePackageManager: NodePackageManager;
   toggleNodePackageManager: ToggleNodePackageManager;
-}>({
+};
+
+const { Consumer, Provider } = createContext<NodePackageManagerValue>({
   nodePackageManager: "npm",
   toggleNodePackageManager: () => {},
 });
