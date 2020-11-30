@@ -1,4 +1,5 @@
-import React, { FC, createContext, useState, useCallback } from "react";
+import React, { FC, createContext, useCallback } from "react";
+import createPersistedState from "use-persisted-state";
 
 type NodePackageManager = "npm" | "yarn";
 
@@ -9,6 +10,7 @@ export type NodePackageManagerValue = {
   toggleNodePackageManager: ToggleNodePackageManager;
 };
 
+const useNodePackageManagerState = createPersistedState("nodePackageManager");
 const { Consumer, Provider } = createContext<NodePackageManagerValue>({
   nodePackageManager: "npm",
   toggleNodePackageManager: () => {},
@@ -20,12 +22,12 @@ export const NodePackageManagerProvider: FC = ({ children }) => {
   const [
     nodePackageManager,
     setNodePackageManager,
-  ] = useState<NodePackageManager>("npm");
+  ] = useNodePackageManagerState<NodePackageManager>("npm");
   const toggleNodePackageManager = useCallback<ToggleNodePackageManager>(() => {
     setNodePackageManager((prevNodePackageManager) =>
       prevNodePackageManager === "npm" ? "yarn" : "npm"
     );
-  }, []);
+  }, [setNodePackageManager]);
 
   return (
     <Provider value={{ nodePackageManager, toggleNodePackageManager }}>

@@ -18,14 +18,16 @@
     "@types/jest": "^26.0.15",
     "@types/node": "^12.19.7",
     "@types/react": "^16.14.2",
+    "@types/react-autosuggest": "10.0.1",
     "@types/react-copy-to-clipboard": "4.3.0",
     "@types/react-dom": "^16.9.10",
     "@types/react-router-dom": "5.1.6",
-    "concurrently": "5.3.0",
+    "@types/use-persisted-state": "0.3.0",
     "gh-pages": "3.1.0",
     "node-sass": "4.14.1",
     "pascal-case": "3.1.1",
     "react": "^17.0.1",
+    "react-autosuggest": "10.0.4",
     "react-copy-to-clipboard": "5.0.2",
     "react-dom": "^17.0.1",
     "react-icons": "4.1.0",
@@ -37,6 +39,7 @@
     "ress": "3.0.0",
     "sass-mq": "5.0.1",
     "typescript": "^4.1.2",
+    "use-persisted-state": "0.3.3",
     "web-vitals": "^0.2.4"
   },
   "eslintConfig": {
@@ -49,13 +52,15 @@
   "name": "react-npm",
   "private": true,
   "scripts": {
-    "build": "concurrently \"npm run copy\" \"react-scripts build\"",
+    "build": "react-scripts build",
+    "copy": "cp package.json ./src/hooks/usePackages/jsons/package.json",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
+    "prebuild": "npm run copy",
     "predeploy": "npm run build",
-    "start": "concurrently \"npm run copy\" \"react-scripts start\"",
-    "test": "react-scripts test",
-    "copy": "cp package.json ./src/hooks/usePackages/jsons/package.json"
+    "prestart": "npm run copy",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
   "version": "0.1.0"
 }

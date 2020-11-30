@@ -1,7 +1,14 @@
 import { useMemo } from "react";
 import packageJson from "./jsons/package.json";
 
-const usePackages = () => {
+type Package = {
+  name: string;
+  version: string;
+}
+
+export type Packages = Package[];
+
+const usePackages = (): Packages => {
   const ignorePackages = useMemo(
     () => [
       "concurrently",
@@ -11,7 +18,6 @@ const usePackages = () => {
       "react",
       "react-copy-to-clipboard",
       "react-dom",
-      "react-icons",
       "react-router-dom",
       "react-scripts",
       "react-switch",
@@ -19,6 +25,7 @@ const usePackages = () => {
       "ress",
       "sass-mq",
       "typescript",
+      "use-persisted-state",
       "web-vitals",
     ],
     []

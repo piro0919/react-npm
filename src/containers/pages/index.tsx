@@ -1,46 +1,23 @@
 import CardList, { CardListProps } from "components/organisms/CardList";
 import Layout from "components/templates/Layout";
 import usePackages from "hooks/usePackages";
-import React, { FC, lazy, Suspense, useMemo } from "react";
-import { pascalCase } from "pascal-case";
+import React, { FC, useCallback, useMemo } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import {
-  NodePackageManagerConsumer,
-  NodePackageManagerValue,
-} from "contexts/NodePackageManagerContext";
 
-const Pages: FC<Pick<NodePackageManagerValue, "nodePackageManager">> = ({
-  nodePackageManager,
-}) => {
+const Pages: FC = () => {
   const packages = usePackages();
+  const handleCopy = useCallback<
+    NonNullable<CardListProps["items"][0]["handleCopy"]>
+  >(() => toast.success("Copied to clipboard!", { containerId: "pages" }), []);
   const items = useMemo<CardListProps["items"]>(
     () =>
-      packages.map(({ name, version }) => {
-        const componentName = pascalCase(name);
-        const LazyComponent = lazy(
-          () => import(`components/packages/${componentName}`)
-        );
-        const installCommand =
-          nodePackageManager === "npm"
-            ? `npm install --save ${name}`
-            : `yarn add ${name}`;
-        const handleCopy = () =>
-          toast.success(`Copy "${installCommand}"`, { containerId: "pages" });
-
-        return {
-          handleCopy,
-          installCommand,
-          name,
-          version,
-          demo: (
-            <Suspense fallback={null} key={name}>
-              <LazyComponent />
-            </Suspense>
-          ),
-          key: name,
-        };
-      }),
-    [nodePackageManager, packages]
+      packages.map(({ name, version }) => ({
+        handleCopy,
+        name,
+        version,
+        key: name,
+      })),
+    [handleCopy, packages]
   );
 
   return (
@@ -55,11 +32,4 @@ const Pages: FC<Pick<NodePackageManagerValue, "nodePackageManager">> = ({
   );
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => (
-  <NodePackageManagerConsumer>
-    {({ nodePackageManager }) => (
-      <Pages nodePackageManager={nodePackageManager} />
-    )}
-  </NodePackageManagerConsumer>
-);
+export default Pages;
