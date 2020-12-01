@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-npm"]=this["webpackJsonpreact-npm"]||[]).push([[8],{34:function(t,n,c){"use strict";c.r(n);var e=c(1),s=(c(0),c(13));n.default=function(){return Object(e.jsx)(s.a,{})}}}]);
+//# sourceMappingURL=8.fd75bdea.chunk.js.map

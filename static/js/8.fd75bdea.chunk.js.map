@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/packages/ReactIcons/index.tsx"],"names":["ReactIcons"],"mappings":"8IAKeA,UAFQ,kBAAM,cAAC,IAAD","file":"static/js/8.fd75bdea.chunk.js","sourcesContent":["import React, { FC } from \"react\";\nimport { FaBeer } from \"react-icons/fa\";\n\nconst ReactIcons: FC = () => <FaBeer />;\n\nexport default ReactIcons;\n"],"sourceRoot":""}

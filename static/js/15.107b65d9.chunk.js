@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-npm"]=this["webpackJsonpreact-npm"]||[]).push([[15],{147:function(s,n,t){s.exports={input:"style_input__2SHCQ",suggestionsContainerOpen:"style_suggestionsContainerOpen__Z3Sbk",suggestion:"style_suggestion__ExNG5"}}}]);
+//# sourceMappingURL=15.107b65d9.chunk.js.map
