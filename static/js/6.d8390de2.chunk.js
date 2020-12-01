@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-npm"]=this["webpackJsonpreact-npm"]||[]).push([[6],{20:function(t,e,c){"use strict";c.r(e);var n=c(1),a=c(0),i=c(23);c(39);e.default=function(){var t=Object(a.useCallback)((function(){Object(i.b)("Hello World!",{containerId:"reactToastify"})}),[]);return Object(n.jsxs)("div",{children:[Object(n.jsx)("button",{onClick:t,children:"Click!"}),Object(n.jsx)(i.a,{enableMultiContainer:!0,containerId:"reactToastify"})]})}}}]);
+//# sourceMappingURL=6.d8390de2.chunk.js.map
