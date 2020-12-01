@@ -20,6 +20,7 @@ const usePackages = (): Packages => {
       "react",
       "react-copy-to-clipboard",
       "react-dom",
+      "react-no-ssr",
       "react-router-dom",
       "react-scripts",
       "react-snap",

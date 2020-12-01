@@ -7,17 +7,19 @@ export type WindowSize = {
 
 const useWindowSize = (): WindowSize => {
   const [windowSize, setWindowSize] = useState<WindowSize>({
-    windowHeight: window.innerHeight,
-    windowWidth: window.innerHeight,
+    windowHeight: 0,
+    windowWidth: 0,
   });
 
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setWindowSize({
         windowHeight: window.innerHeight,
         windowWidth: window.innerWidth,
       });
-    }
+    };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
