@@ -40,3 +40,21 @@
 .articleContentWrapper {
   padding: 8px 0 0;
 }
+
+.versionsWrapper {
+  align-items: baseline;
+  display: grid;
+  gap: 4px;
+  grid-auto-flow: column;
+  justify-content: flex-start;
+}
+
+.types {
+  font-size: 1.2rem;
+}
+
+.copyToClipboardWrapper {
+  display: grid;
+  gap: 4px;
+  grid-auto-flow: column;
+}

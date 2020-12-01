@@ -11,9 +11,10 @@ const Pages: FC = () => {
   >(() => toast.success("Copied to clipboard!", { containerId: "pages" }), []);
   const items = useMemo<CardListProps["items"]>(
     () =>
-      packages.map(({ name, version }) => ({
+      packages.map(({ name, typesVersion, version }) => ({
         handleCopy,
         name,
+        typesVersion,
         version,
         key: name,
       })),

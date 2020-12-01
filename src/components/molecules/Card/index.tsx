@@ -19,12 +19,13 @@ import {
 export type CardProps = {
   handleCopy: CopyToClipboard.Props["onCopy"];
   name: Heading2Props["children"] & Parameters<typeof pascalCase>[0];
+  typesVersion: ComponentPropsWithoutRef<"div">["children"];
   version: ComponentPropsWithoutRef<"div">["children"];
 };
 
 const Card: FC<
   CardProps & Pick<NodePackageManagerValue, "nodePackageManager">
-> = ({ handleCopy, name, nodePackageManager, version }) => {
+> = ({ handleCopy, name, nodePackageManager, typesVersion, version }) => {
   const componentName = useMemo(() => pascalCase(name), [name]);
   const LazyComponent = useMemo(
     () => lazy(() => import(`components/packages/${componentName}`)),
@@ -39,11 +40,26 @@ const Card: FC<
         : `yarn add ${name}`,
     [name, nodePackageManager]
   );
+  const installTypesCommand = useMemo<
+    CopyToClipboard.Props["text"] & ComponentPropsWithoutRef<"div">["children"]
+  >(
+    () =>
+      nodePackageManager === "npm"
+        ? `npm install --save-dev @types/${name}`
+        : `yarn add --dev @types/${name}`,
+    [name, nodePackageManager]
+  );
 
   return (
     <div className={styles.wrapper}>
       <header className={styles.headerWrapper}>
-        <Heading2>{name}</Heading2>
+        <a
+          href={`https://www.npmjs.com/package/${name}`}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <Heading2>{name}</Heading2>
+        </a>
         <a
           href={`https://www.npmjs.com/package/${name}`}
           rel="noreferrer"
@@ -57,18 +73,37 @@ const Card: FC<
           <div className={styles.headingWrapper}>
             <Heading3>Version</Heading3>
           </div>
-          <div className={styles.articleContentWrapper}>{version}</div>
+          <div
+            className={`${styles.articleContentWrapper} ${styles.versionsWrapper}`}
+          >
+            <div>{`v${version}`}</div>
+            {typesVersion ? (
+              <div className={styles.types}>{`(v${typesVersion})`}</div>
+            ) : null}
+          </div>
         </article>
         <article>
           <div className={styles.headingWrapper}>
             <Heading3>Install</Heading3>
-            <CopyToClipboard onCopy={handleCopy} text={installCommand}>
-              <button>
-                <FaRegCopy className={styles.copyIcon} />
-              </button>
-            </CopyToClipboard>
+            <div className={styles.copyToClipboardWrapper}>
+              <CopyToClipboard onCopy={handleCopy} text={installCommand}>
+                <button>
+                  <FaRegCopy className={styles.copyIcon} />
+                </button>
+              </CopyToClipboard>
+              {typesVersion ? (
+                <CopyToClipboard onCopy={handleCopy} text={installTypesCommand}>
+                  <button>
+                    <FaRegCopy className={styles.copyIcon} />
+                  </button>
+                </CopyToClipboard>
+              ) : null}
+            </div>
           </div>
-          <div className={styles.articleContentWrapper}>{installCommand}</div>
+          <div className={styles.articleContentWrapper}>
+            <div>{installCommand}</div>
+            {typesVersion ? <div>{installTypesCommand}</div> : null}
+          </div>
         </article>
         <article>
           <div className={styles.headingWrapper}>
@@ -95,13 +130,14 @@ const Card: FC<
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({ handleCopy, name, version }: CardProps) => (
+export default ({ handleCopy, name, typesVersion, version }: CardProps) => (
   <NodePackageManagerConsumer>
     {({ nodePackageManager }) => (
       <Card
         handleCopy={handleCopy}
         name={name}
         nodePackageManager={nodePackageManager}
+        typesVersion={typesVersion}
         version={version}
       />
     )}
