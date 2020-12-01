@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/packages/ReactAriaModal/index.tsx"],"names":["ReactAriaModal"],"mappings":"oIAIeA,UAFY,kBAAM","file":"static/js/3.de0b4be9.chunk.js","sourcesContent":["import React, { FC } from \"react\";\n\nconst ReactAriaModal: FC = () => <div>a</div>;\n\nexport default ReactAriaModal;\n"],"sourceRoot":""}
