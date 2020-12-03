@@ -1,4 +1,11 @@
+@import "styles/constants";
+@import "sass-mq";
+
 html {
+  @include mq($until: tablet) {
+    font-size: 56.25%;
+  }
+
   font: 62.5% arial, sans-serif;
   overflow: auto scroll;
 }
