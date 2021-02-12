@@ -17,7 +17,7 @@
     "@testing-library/user-event": "12.7.0",
     "@types/jest": "26.0.20",
     "@types/node": "12.20.0",
-    "@types/react": "16.14.3",
+    "@types/react": "16.14.4",
     "@types/react-aria-modal": "4.0.2",
     "@types/react-autosuggest": "10.1.1",
     "@types/react-copy-to-clipboard": "4.3.0",
