@@ -19,7 +19,7 @@
     "@types/node": "12.20.1",
     "@types/react": "16.14.4",
     "@types/react-aria-modal": "4.0.2",
-    "@types/react-autosuggest": "10.1.1",
+    "@types/react-autosuggest": "10.1.2",
     "@types/react-copy-to-clipboard": "4.3.0",
     "@types/react-dom": "16.9.11",
     "@types/react-no-ssr": "1.1.1",
