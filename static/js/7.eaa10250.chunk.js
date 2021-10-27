@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-npm"]=this["webpackJsonpreact-npm"]||[]).push([[7,17],{147:function(e,a,n){e.exports={wrapper:"style_wrapper__3Pr2Z"}},33:function(e,a,n){"use strict";n.r(a);n(0);var r=n(166),p=n.n(r),t=n(147),c=n.n(t),s=n(1);a.default=function(){return Object(s.jsx)("div",{className:c.a.wrapper,children:Object(s.jsx)(p.a,{name:"pacman"})})}}}]);
+//# sourceMappingURL=7.eaa10250.chunk.js.map
